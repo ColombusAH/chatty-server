@@ -13,9 +13,9 @@ export class AuthenticationMiddleware implements NestMiddleware {
         cache: true,
         rateLimit: true,
         jwksRequestsPerMinute: 5,
-        jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`,
+        jwksUri: `${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`,
       }),
-      issuer: `https://${process.env.AUTH0_DOMAIN}/`,
+      issuer: `${process.env.AUTH0_DOMAIN}/`,
       algorithms: ['RS256'],
     })(req, res, (err) => {
       if (err) {
